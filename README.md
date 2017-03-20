@@ -1,0 +1,2 @@
+# DjangoApp
+DjangoApp Ecommerce Application
