@@ -20,18 +20,20 @@ Steps to Run App:
   http://127.0.0.1:8000/checkout/
 
   
-To Check the DB (https://github.com/hgamit/DjangoApp/blob/master/myTest/src/db.sqlite3)
+To Check the DB (https://github.com/hgamit/DjangoApp/blob/master/myTest/src/db.sqlite3) 
 
-1. Download sqlite from http://www.sqlite.org/2017/sqlite-tools-win32-x86-3170000.zip
+      1. Download sqlite from http://www.sqlite.org/2017/sqlite-tools-win32-x86-3170000.zip
 
-2. extract and set the path
+      2. extract and set the path
 
-3. then go to the <Workarea>\DjangoApp\myTest\src
+      3. then go to the <Workarea>\DjangoApp\myTest\src
 
-4. open command prompt
+      4. open command prompt
 
-5. > python manage.py dbshell
+      5. > python manage.py dbshell
 
-to view tables use sqlite> .tables
+      to view tables use sqlite> .tables
 
-to view schema use sqlite> .schema
+      to view schema use sqlite> .schema
+
+OR Install sqlite from http://sqlitebrowser.org/ and select the DB
