@@ -1,5 +1,5 @@
 # DjangoApp
-Django E-commerce Application
+Django Application
 
 Pre-requisites:
 install Python 3.6 https://www.python.org/downloads/, and while installing python choose most of the checkboxes.
@@ -20,3 +20,10 @@ Steps to Run App:
   http://127.0.0.1:8000/
   http://127.0.0.1:8000/admin/
   http://127.0.0.1:8000/checkout/
+9. Create SuperUser:
+(myvenv) ~/djangogirls$ python manage.py createsuperuser
+Username: admin
+Email address: admin@admin.com
+Password:
+Password (again):
+Superuser created successfully.
