@@ -15,16 +15,34 @@
 {% block jumbotron %}
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Theme</h1>
+       
+          <h1 class="display-4">Delivery by People</h1>
+          <p class="lead">This is a simple online platform, Build and Designed to serve people. Make deliveries, earn money.</p>
+          <hr class="my-4">
+          <p>It uses todays internet advancement to expedite product delivery at cheaper rates.</p>
+          <a class="btn btn-primary btn-lg" href="#" role="button">Get Started Now</a>
+      
+
      </div>
 {% endblock %} 
 
 
 {% block content %}
 <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
+         
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading"></div>
+            <div class="panel panel-body">    
+   
+      <a href="#"><img src="{% static "img/video.png"%}" width="560" height="290" class="image-responsive"></a>
+    </div>  
+    </div>
+  </div>
+      <div class="col-md-1"></div>
+         <div class="col-md-4 col-xs-12"> <div class="panel panel-default">
+            <div class="panel panel-heading"></div>
+                <div class="panel panel-body">  
 		{% if request.user.is_authenticated %}
 		<h3> Hello {{ request.user }}</h3>
 		{% else %}
@@ -46,6 +64,51 @@
 {% endif %}
         </div>
       </div>
+      </div>
+    </div>
+    <hr class="my-12">
+      <div class="d-md-flex flex-md-equal w-100 my-md-6 pl-md-6">
+          <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+            <div class="my-3 p-3">
+              <h2 class="display-5">Make a Delivery</h2>
+              <p class="lead">Part time trick to make money while commuting.</p>
+              <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Your Location" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Orders</button>
+                </form> <br/> <br/>
+           <!--   <a class="btn btn-success" href="#" role="button">Learn more</a> -->
+            </div>
+          </div>
+          <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+            <div class="my-3 py-3">
+              <h2 class="display-5">Create a Shipment</h2>
+              <p class="lead">Get your package delivered on time.</p>
+              <a class="btn btn-success" href="#" role="button">Do It Now</a>
+            </div>
+            <!-- <div class="bg-white box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
+          </div>
+        </div>
+
+        <hr class="my-12">
+        <div class="d-md-flex flex-md-equal w-100 my-md-6 pl-md-6">
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+              <div class="my-3 p-3">
+                  <blockquote class="pjT mjT">
+        
+                      <p class="text-left bold msT">- Michael Dinh on Facebook</p>
+                    <h4 class="txt-alt-grey text-left">I'm late to the party, but @vitaran is a great way to make extra income. #fun"</h4></blockquote>
+                              </div>
+            </div>
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+              <div class="my-3 py-3 display-5">
+                  <blockquote class="pjT mjT">
+                      <h4 class="txt-alt-grey text-left">Vitaran has allowed us to reach a wider, more diverse way to involve people make deliveries, as well as setting up new trend.#ReplacingPost</h4>
+                      <p class="text-left bold msT">- Huan Shi, University of St Thomas</p>
+                    </blockquote>
+                    </div>
+            </div>
+          </div>
+
 {% endblock %}
 
 
