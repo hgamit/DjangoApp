@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+{% load leaflet_tags %}
+<html>
+<head>
+
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'grplyrcontrol/leaflet.groupedlayercontrol.min.css' %}">	
+		<link rel="stylesheet" type="text/css" href="{% static 'routing/leaflet-routing-machine.css' %}">	
+		<link rel="stylesheet" type="text/css" href="{% static 'locate/L.Control.Locate.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'geocoder/Control.Geocoder.css' %}">	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style type="text/css"> 
+      #gis {width:80%; height:600px;}
+    </style>
+    <script type="text/javascript" src="{% static 'dist/leaflet.ajax.js' %}"></script>
+    <script type="text/javascript" src="{% static 'grplyrcontrol/leaflet.groupedlayercontrol.min.js' %}" ></script>
+		<script type="text/javascript" src="{% static 'routing/leaflet-routing-machine.js' %}" ></script>
+		<script type="text/javascript" src="{% static 'locate/L.Control.Locate.min.js' %}" ></script>
+		<script type="text/javascript" src="{% static 'geocoder/Control.Geocoder.js' %}" ></script>
+    <title>Our Home</title>
+
+
+</head>
+<body><h1>How is it going?</h1>
+
+    <script type="text/javascript">
+    function our_layers(map,options)
+    {
+		var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			});
+		var OpenTopoMap = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+			maxZoom: 17,
+			attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+		});
+        
+        var datasets = new L.GeoJSON.AJAX("{% url 'reporter:county' %}",{
+			style: function colors(feature){
+				switch(feature.properties.counties){
+					case 'WAJIR':
+						return{
+							color: 'orange',
+							fillOpacity: 0.8
+						};
+					break;
+					case 'ISIOLO':
+						return{
+							color: 'purple',
+							fillOpacity: 0.8
+						};
+					break;
+
+				}
+			},
+            onEachFeature: function(feature,layer){
+				layer.bindPopup(feature.properties.counties.toString());
+			}
+        });
+
+        var points = new L.GeoJSON.AJAX("{% url 'reporter:incidences' %}",{
+            onEachFeature: function(feature,layer){
+				layer.bindPopup(feature.properties.name.toString());
+			}
+
+        });
+        //datasets.addTo(map);
+        points.addTo(map);
+
+		var baseLayers = {
+			"OSM": osm,
+			"OpenTopoMap":OpenTopoMap
+		}
+
+		var groupedOverlays = {
+		  "Layers": {
+		    "counties": datasets,
+		    "incidences": points
+		  }
+
+		};
+
+		L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
+		L.control.locate().addTo(map);
+
+        L.Routing.control({
+		  waypoints: [
+		    L.latLng(44.97718525532363, -93.26664733467624),
+		    L.latLng(44.95037182567995, -93.09917449951172)
+		  ],
+			routeWhileDragging: true,
+    geocoder: L.Control.Geocoder.nominatim()
+		}).addTo(map);
+
+
+
+    }
+    </script>
+    {% leaflet_map 'gis' callback='window.our_layers' %}
+
+</body></html>

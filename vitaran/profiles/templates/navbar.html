@@ -1,6 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     {% url 'home' as home %}
-  <a class="navbar-brand" href="{% url 'home' %}">Vitaran</a>
+    {% url 'profile' as profile %}
+    
+    {% if not request.user.is_authenticated %}
+    <a class="navbar-brand" href="{% url 'home' %}">Vitaran</a>
+    {% else %}
+    <a class="navbar-brand" href="{% url 'profile' %}">Vitaran</a>
+    {% endif %}
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -38,10 +44,11 @@
               Profile
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Wallet</a>
+              <a class="dropdown-item" href="#">Messages</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Somethingelse</a>
+              <a class="dropdown-item" href="#">Feedback</a>
+              <a class="dropdown-item" href="#">Blog</a>
             </div>
           </li>
         <li class="nav-item">
