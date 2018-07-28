@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Provide User Security Information{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'boards:home' %}">Boards</a></li>
+  <li class="breadcrumb-item active">Security</li>
+{% endblock %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
+    <button type="submit" class="btn btn-success">Next</button>
+  </form>
+{% endblock %}

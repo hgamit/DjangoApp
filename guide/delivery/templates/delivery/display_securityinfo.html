@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}User Detail{% endblock %}
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/delivery.css' %}">
+{% endblock %}
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'boards:home' %}">Boards</a></li>
+  <li class="breadcrumb-item active">Personal</li>
+{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="mb-4">
+  <a href="{% url 'delivery:edit_securityinfo' %}" class="btn btn-primary" role="button">Edit</a>
+</div>
+
+<!--
+<img src="{{ usersecurityinfo.ssn_img.url }}" width="304" height="236" class="img-thumbnail mx-auto d-block" alt="ssn.jpg">
+<br/><br/><br/>
+-->
+<table class="table table-bordered">
+  <thead class="thead-inverse">
+  </thead>
+  <tbody>
+
+      <tr>
+          <td>SSN Number</td>
+          <td>{{ usersecurityinfo.ssn_number }}</td>
+        </tr>
+
+        <tr>
+            <td>Identity Card State</td>
+            <td>{{ usersecurityinfo.dl_state }}</td>
+          </tr>
+
+          <tr>
+              <td>Identity Number</td>
+              <td>{{ usersecurityinfo.dl_number }}</td>
+            </tr>
+
+  </tbody>
+</table>
+
+{% endif %}
+{% endblock %}

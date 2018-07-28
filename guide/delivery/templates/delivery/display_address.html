@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}User Address{% endblock %}
+{% block stylesheet %}
+ 
+{% endblock %}
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'boards:home' %}">Boards</a></li>
+  <li class="breadcrumb-item active">Addresses</li>
+{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<!--
+<img src="{{ usersecurityinfo.ssn_img.url }}" width="304" height="236" class="img-thumbnail mx-auto d-block" alt="ssn.jpg">
+<br/><br/><br/>
+-->
+<div class="row">
+    {% for address in useraddress_list %}
+      
+   
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ address.point_of_contact }}</h5>
+            <p class="card-text">{{ address.address_type }}</p>
+            <p class="card-text">{{ address.po_box_number }}, {{ address.street_number }}, {{ address.route }}<br />{{ address.city }}<br /> {{ address.state }}, {{ address.zip_code }}, {{ address.country }}</p>
+            <p class="card-text">{{ address.contact_phone }}</p>
+            <a href="{% url 'delivery:edit_address' address.pk %}" class="btn btn-primary" role="button">Edit</a>
+            <a href="{% url 'delivery:delete_address' address.pk %}" class="btn btn-danger" role="button">Delete</a>
+          </div>
+        </div>
+        <br/>
+      </div>
+
+    
+    
+      {% endfor %}
+
+      <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              
+              <br/><br/><br/><br/><h5 class="card-title"><a href="{% url 'delivery:new_address' %}" class="btn btn-primary" role="button">Add New</a></h5><br/><br/><br/><br/>
+            </div>
+          </div>
+        </div>
+  
+
+    </div>
+{% endif %}
+
+{% endblock %}

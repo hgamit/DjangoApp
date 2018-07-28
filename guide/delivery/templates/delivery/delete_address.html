@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load form_tags widget_tweaks %}
+
+{% block title %}Delete Address{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'boards:home' %}">Boards</a></li>
+  <li class="breadcrumb-item active">Delete Address</li>
+{% endblock %}
+
+{% block content %}
+  <form method="post" novalidate>
+      {% csrf_token %}
+    <p>Are you sure you want to delete "{{ address.point_of_contact }}"?</p>
+<button type="submit" class="btn btn-success">Confirm Delete</button>
+<a href="{% url 'delivery:display_address' %}" class="btn btn-outline-secondary" role="button">Cancel</a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'boards:home' %}">Boards</a></li>
+  <li class="breadcrumb-item">View Details</li>
+  <li class="breadcrumb-item active">{{ user.username }}</li>
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ user.userdetail.first_name }}</h1>
+<h1>{{ user.userdetail.last_name }}</h1>
+<h1>{{ user.userdetail.sex }}</h1>
+<h1>{{ user.userdetail.date_of_birth }}</h1>
+
+<ul>
+    <li>{{ request.user }}</li>
+</ul>
+
+<a href="{% url 'boards:home' %}">Home?</a>
+
+{% endblock %}

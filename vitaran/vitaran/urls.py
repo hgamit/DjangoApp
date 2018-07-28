@@ -28,6 +28,7 @@ urlpatterns = [
     path('about/', profiles_views.about, name='about'),
     path('contact/', contact_views.contact, name='contact'),
     path('profile/', profiles_views.userProfile, name='profile'),
+    path('userdetail/', include('userdetails.urls')),
     path(r'accounts/', include('allauth.urls')),
 ]
 

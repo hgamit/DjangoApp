@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profiles',
+    'userdetails',
     'contact',
     'crispy_forms',
     'django.contrib.sites',
@@ -178,7 +179,8 @@ ACCOUNT_LOGOUT_REDIRECT_URL ='/'
 ACCOUNT_PASSWORD_INPUT_RENDER_VALUE =False
 ACCOUNT_PASSWORD_MIN_LENGTH = 6
 
-ACCOUNT_SIGNUP_FORM_CLASS =None
+ACCOUNT_SIGNUP_FORM_CLASS = None
+#ACCOUNT_SIGNUP_FORM_CLASS = 'userdetails.forms.SignupForm'
 ACCOUNT_SIGNUP_PASSWORD_VERIFICATION =True
 
 ACCOUNT_USERNAME_BLACKLIST =[]
