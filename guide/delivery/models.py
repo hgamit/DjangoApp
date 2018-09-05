@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, connection
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from localflavor.us.models import USStateField, USSocialSecurityNumberField
@@ -83,8 +83,15 @@ class UserAddress(models.Model):
     point_of_contact = models.CharField(max_length=255,default="")
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Please make sure phone number format: '+199999999'. Up to 15 digits allowed.")
     contact_phone = models.CharField(validators=[phone_regex], max_length=17, default="")
-    ##coordinates = gis_models.PointField(help_text="To generate the map for your location")
+    lat = models.DecimalField(max_digits=10, decimal_places=6, default = 0.0)
+    lng = models.DecimalField(max_digits=10, decimal_places=6, default = 0.0)
     last_updated = models.DateTimeField(auto_now_add=True) #Adds current Date and Time
 
     def __str__(self):
-        return self.customer.username
+        return self.street_number+" "+self.route+", "+self.city+", "+self.country+", "+self.zip_code
+        
+    def get_permanent_lat(self):
+        return UserAddress.objects.values_list('lat', flat=True).filter(address_type="Permanent").first()
+
+    def get_permanent_lng(self):
+        return UserAddress.objects.values_list('lng', flat=True).filter(address_type="Permanent").first()

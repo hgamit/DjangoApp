@@ -1,31 +1,4 @@
-{% extends 'base.html' %}
-{% load form_tags widget_tweaks %}
-
-{% block title %}Edit Address{% endblock %}
-
-{% block stylesheet %}
-{% endblock %}
-
-{% block breadcrumb %}
-  <li class="breadcrumb-item"><a href="{% url 'boards:home' %}">Boards</a></li>
-  <li class="breadcrumb-item active">Edit Address</li>
-{% endblock %}
-
-{% block content %}
-<div id="locationField" class="form-group">
-    <input id="autocomplete" placeholder="Start typing your address"
-           onFocus="geolocate()" type="text" size="35" class="form-control"></input>
-  </div>
-
-  <form method="post" novalidate>
-    {% csrf_token %}
-    {% include 'includes/columnForm.html' %}
-<button type="submit" class="btn btn-success">Save Changes</button>
-<a href="{% url 'delivery:display_address' %}" class="btn btn-outline-secondary" role="button">Cancel</a>
-</form>
-
-    
-    <script>
+$(document).ready(function() {
         // This example displays an address form, using the autocomplete feature
         // of the Google Places API to help users fill in the information.
   
@@ -42,20 +15,12 @@
           country: 'long_name',
           postal_code: 'short_name'
         };
-        
-//        <!-- var place = autocomplete.getPlace(); -->
-  
-//  <!-- var lat = place.geometry.location.lat(), -->
-//      <!-- lng = place.geometry.location.lng(); -->
-  
-//  <!-- // Then do whatever you want with them -->
   
 //  <!-- console.log(lat); -->
-//  <!-- console.log(lng); -->
-  
+//  <!-- console.log(lng); -->  
 //  <!-- console.warn('Warning: I didn\'t test this code!'); -->
   
-        function initAutocomplete() {
+        //function initAutocomplete() {
           // Create the autocomplete object, restricting the search to geographical
           // location types.
           autocomplete = new google.maps.places.Autocomplete(
@@ -65,12 +30,17 @@
           // When the user selects an address from the dropdown, populate the address
           // fields in the form.
           autocomplete.addListener('place_changed', fillInAddress);
-        }
+        //}
   
         function fillInAddress() {
           // Get the place details from the autocomplete object.
           var place = autocomplete.getPlace();
-  
+          var lat = place.geometry.location.lat();
+          var lng = place.geometry.location.lng();
+          console.log(lat); 
+          console.log(lng); 
+          $("#id_lat").val(lat.toFixed(6));
+          $("#id_lng").val(lng.toFixed(6));
           for (var component in componentForm) {
             document.getElementById(component).value = '';
             document.getElementById(component).disabled = false;
@@ -90,7 +60,7 @@
   
         // Bias the autocomplete object to the user's geographical location,
         // as supplied by the browser's 'navigator.geolocation' object.
-        function geolocate() {
+        $("#autocomplete").focus(function () {
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
               var geolocation = {
@@ -104,8 +74,6 @@
               autocomplete.setBounds(circle.getBounds());
             });
           }
-        }
-      </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key={{GMAPS}}&libraries=places&callback=initAutocomplete"
-          async defer></script>
-{% endblock %}
+        }); //keyup
+
+    });//ready

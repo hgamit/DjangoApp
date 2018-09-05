@@ -28,8 +28,8 @@
             <p class="card-text">{{ address.address_type }}</p>
             <p class="card-text">{{ address.po_box_number }}, {{ address.street_number }}, {{ address.route }}<br />{{ address.city }}<br /> {{ address.state }}, {{ address.zip_code }}, {{ address.country }}</p>
             <p class="card-text">{{ address.contact_phone }}</p>
-            <a href="{% url 'delivery:edit_address' address.pk %}" class="btn btn-primary" role="button">Edit</a>
-            <a href="{% url 'delivery:delete_address' address.pk %}" class="btn btn-danger" role="button">Delete</a>
+            <a href="{% url 'delivery:edit_useraddress' address.pk %}" class="btn btn-primary" role="button">Edit</a>
+            <a href="{% url 'delivery:delete_useraddress' address.pk %}" class="btn btn-danger" role="button">Delete</a>
           </div>
         </div>
         <br/>
@@ -43,7 +43,7 @@
           <div class="card">
             <div class="card-body">
               
-              <br/><br/><br/><br/><h5 class="card-title"><a href="{% url 'delivery:new_address' %}" class="btn btn-primary" role="button">Add New</a></h5><br/><br/><br/><br/>
+              <br/><br/><br/><br/><h5 class="card-title"><a href="{% url 'delivery:new_useraddress' %}" class="btn btn-primary" role="button">Add New</a></h5><br/><br/><br/><br/>
             </div>
           </div>
         </div>

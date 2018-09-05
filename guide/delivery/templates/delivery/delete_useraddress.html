@@ -16,7 +16,7 @@
       {% csrf_token %}
     <p>Are you sure you want to delete "{{ address.point_of_contact }}"?</p>
 <button type="submit" class="btn btn-success">Confirm Delete</button>
-<a href="{% url 'delivery:display_address' %}" class="btn btn-outline-secondary" role="button">Cancel</a>
+<a href="{% url 'delivery:display_useraddress' %}" class="btn btn-outline-secondary" role="button">Cancel</a>
 </form>
 
 {% endblock %}

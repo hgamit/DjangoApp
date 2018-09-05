@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load form_tags widget_tweaks %}
 
-{% block title %}Provide Address Information{% endblock %}
+{% block title %}Edit Address{% endblock %}
 
 {% block stylesheet %}
 {% endblock %}
 
 {% block breadcrumb %}
   <li class="breadcrumb-item"><a href="{% url 'boards:home' %}">Boards</a></li>
-  <li class="breadcrumb-item active">Address</li>
+  <li class="breadcrumb-item active">Edit Address</li>
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,8 @@
   <form method="post" novalidate>
     {% csrf_token %}
     {% include 'includes/columnForm.html' %}
-<button type="submit" class="btn btn-success">Submit</button>
+<button type="submit" class="btn btn-success">Save Changes</button>
+<a href="{% url 'delivery:display_useraddress' %}" class="btn btn-outline-secondary" role="button">Cancel</a>
 </form>
 
     

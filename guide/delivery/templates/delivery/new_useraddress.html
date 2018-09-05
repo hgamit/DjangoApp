@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static form_tags widget_tweaks %}
+
+{% block title %}Provide Address Information{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'boards:home' %}">Boards</a></li>
+  <li class="breadcrumb-item active">Address</li>
+{% endblock %}
+
+{% block content %}
+<div id="locationField" class="form-group">
+    <input id="autocomplete" placeholder="Start typing your address" type="text" size="35" class="form-control"/>
+  </div>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% include 'includes/columnForm.html' %}
+<button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+
+{% block javascript %}
+<script src="{% static 'js/delivery.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{GMAPS}}&libraries=places"
+          async defer></script>
+{% endblock %}
+    
+{% endblock %}

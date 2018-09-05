@@ -1,0 +1,13 @@
+{% for dis in distances %}
+<tr>
+  <td>{{ dis.package_type }}<br/>{{ dis.package_description }}</td>
+  <td>{{ dis.distance }} mile</td>        
+  <td>{{ dis.package_weight }}</td>
+  <td>{{ dis.package_dimensions }}</td>
+  <td>{{ dis.pickup_adrs }}</td>
+  <td>{{ dis.delivery_adrs }}</td>
+  <td>USD {{ dis.shipping_charge }}</td>
+  <td>{{ dis.delivery_timeline }}</td>
+  <td> <a href="" class="btn btn-primary" role="button">Request</a></td>
+</tr>
+{% endfor %}

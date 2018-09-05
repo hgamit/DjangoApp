@@ -28,7 +28,9 @@ class UserSecurityInfoForm(forms.ModelForm):
 class UserAddressForm(forms.ModelForm):
     class Meta:
         model = UserAddress
-        fields = ("po_box_number","address_type","street_number", "route", "city", "state", "country", "zip_code", "point_of_contact", "contact_phone")
+        fields = ("po_box_number","address_type","street_number", 
+        "route", "city", "state", "country", "zip_code", 
+        "point_of_contact", "contact_phone", "lat", "lng")
         widgets={
             "po_box_number":forms.TextInput(attrs={'placeholder':'PO Box/House/Apartment Number','id':'po_box_number'}),
             #"address_type":forms.TextInput(attrs={'placeholder':'Type of Address','id':'address_type'}),
@@ -40,5 +42,6 @@ class UserAddressForm(forms.ModelForm):
             "zip_code":forms.TextInput(attrs={'placeholder':'Postal Code','id':'postal_code'}),
             "point_of_contact":forms.TextInput(attrs={'placeholder':'Residents Full Name','id':'point_of_contact'}),
             "contact_phone":forms.TextInput(attrs={'placeholder':'Residents Phone','id':'contact_phone'}),
-            #"coordinates":forms.Textarea(attrs={'id':'coordinates'}),
+            "lat":forms.NumberInput(attrs={'type':'hidden', 'min' : '0'}),
+            "lng":forms.NumberInput(attrs={'type':'hidden', 'min' : '0'}),
             }

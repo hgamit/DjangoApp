@@ -44,9 +44,9 @@ def new_securityinfo(request):
 
 @method_decorator(login_required, name='dispatch')
 class UserAddressCreateView(FormView):
-    template_name = "delivery/new_address.html"
+    template_name = "delivery/new_useraddress.html"
     form_class = UserAddressForm
-    success_url = reverse_lazy("delivery:display_address")
+    success_url = reverse_lazy("delivery:display_useraddress")
 
     def form_valid(self, form):
         detail = form.save(commit=False)
@@ -88,7 +88,7 @@ class UserSecurityInfoUpdateView(UpdateView):
 class UserAddressUpdateView(UpdateView):
     model = UserAddress
     form_class = UserAddressForm
-    template_name = 'delivery/edit_address.html'
+    template_name = 'delivery/edit_useraddress.html'
     pk_url_kwarg = 'address_pk'
     context_object_name = 'address'
 
@@ -100,7 +100,7 @@ class UserAddressUpdateView(UpdateView):
         address = form.save(commit=False)
         address.last_updated = timezone.now()
         address.save()
-        return redirect('delivery:display_address')
+        return redirect('delivery:display_useraddress')
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get the context
@@ -129,7 +129,7 @@ class UserSecurityInfoDisplay(DetailView):
 class UserAddressDisplay(ListView):
     model = UserAddress
     queryset = UserAddress.objects.all() # querying DB
-    template_name = 'delivery/display_address.html'
+    template_name = 'delivery/display_useraddress.html'
 
     def get_object(self,queryset=None):
         return self.request.user.uaddress
@@ -137,8 +137,8 @@ class UserAddressDisplay(ListView):
 @method_decorator(login_required, name='dispatch')
 class UserAddressDeleteView(DeleteView):
     model = UserAddress
-    template_name = 'delivery/delete_address.html'
-    success_url = reverse_lazy('delivery:display_address')
+    template_name = 'delivery/delete_useraddress.html'
+    success_url = reverse_lazy('delivery:display_useraddress')
     pk_url_kwarg = 'address_pk'
     context_object_name = 'address'
 

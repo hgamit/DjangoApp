@@ -9,9 +9,8 @@ urlpatterns = [
     path('new_securityinfo/', views.new_securityinfo, name='new_securityinfo'),
     path('display_securityinfo/', views.UserSecurityInfoDisplay.as_view(), name='display_securityinfo'),
     path('edit_securityinfo/', views.UserSecurityInfoUpdateView.as_view(), name='edit_securityinfo'),
-    path('new_address/', views.UserAddressCreateView.as_view(), name='new_address'),
-    #path('display_address/<address_pk>', views.display_address, name='display_address'),
-    path('display_address/', views.UserAddressDisplay.as_view(), name='display_address'),
-    path('<address_pk>/edit_address/', views.UserAddressUpdateView.as_view(), name='edit_address'),
-    path('<address_pk>/delete_address/', views.UserAddressDeleteView.as_view(), name='delete_address'),
+    path('new_useraddress/', views.UserAddressCreateView.as_view(), name='new_useraddress'),
+    path('display_useraddress/', views.UserAddressDisplay.as_view(), name='display_useraddress'),
+    path('<address_pk>/edit_useraddress/', views.UserAddressUpdateView.as_view(), name='edit_useraddress'),
+    path('<address_pk>/delete_useraddress/', views.UserAddressDeleteView.as_view(), name='delete_useraddress'),
 ]

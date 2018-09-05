@@ -21,8 +21,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('boards/', include('boards.urls')),
     path('admin/', admin.site.urls),
+    path('ajaxtest/', include('ajaxtest.urls')),
     path('accounts/', include('accounts.urls')),
     path('delivery/', include('delivery.urls')),
+    path('dmanage/', include('dmanage.urls')),
+    path('dpickup/', include('dpickup.urls')),
+    path('dtest/', include('dtest.urls')),
 ]
 
 

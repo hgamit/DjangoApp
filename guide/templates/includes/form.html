@@ -7,8 +7,8 @@
     {% endfor %}
   </div>
 {% endif %}
-
-{% for field in form %}
+{# Include the visible fields #}
+{% for field in form.visible_fields %}
   <div class="form-group">
     {{ field.label_tag }}
     {% render_field field class=field|input_class %}
@@ -23,4 +23,9 @@
       </small>
     {% endif %}
   </div>
+{% endfor %}
+
+{# Include the hidden fields #}
+{% for hidden in form.hidden_fields %}
+{{ hidden }}
 {% endfor %}

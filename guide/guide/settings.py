@@ -40,9 +40,12 @@ INSTALLED_APPS = [
     'boards',
     'widget_tweaks',
     'accounts',
+    'ajaxtest',
     'delivery',
     'localflavor',
-    'mapwidgets',
+    'dmanage',
+    'dtest',
+    'dpickup',
     'django.contrib.gis',
 ]
 
@@ -139,4 +142,4 @@ LOGIN_REDIRECT_URL = 'boards:home'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-GOOGLE_API_KEY = 'AIzaSyCLUGIeTbnG5wru-UDg43d0YLvlKvX5F9k'
+GOOGLE_API_KEY = 'AIzaSyCwnyB3u6daVwzmkt3c85SvxOMuQDwrKwo'
