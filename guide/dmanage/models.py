@@ -22,11 +22,7 @@ class WithDistanceManager(models.Manager):
         class Acos(Func):
             function = 'ACOS'
         class Radians(Func):
-            function = 'RADIANS'
-
-        class Round(Func):
-            function = 'ROUND'
-            arity = 2            
+            function = 'RADIANS'           
 
         radlat = Radians(pickup_adrs_lat) # given latitude
         radlong = Radians(pickup_adrs_lng) # given longitude
@@ -118,6 +114,8 @@ class UserPackage(models.Model):
     bicycling_duration = models.DecimalField(max_digits=10, decimal_places=3, default = 0.0)
     transit_duration = models.DecimalField(max_digits=10, decimal_places=3, default = 0.0)
     shipping_charge = models.CharField(max_length = 255, default = "5")
+    #payment_nonce = models.CharField(max_length=100,null=True,blank=True)
+    txnid = models.CharField(max_length=25,null=True,blank=True)
     payment_status = models.BooleanField(default=False)
     last_updated = models.DateTimeField(auto_now_add=True)
     
@@ -127,3 +125,12 @@ class UserPackage(models.Model):
         return self.customer.username
 
 
+class UserBilling(models.Model):
+    customer = models.OneToOneField(User, on_delete=models.DO_NOTHING,related_name='userbilling')
+    #client_token = models.TextField(verbose_name=u'client token', max_length=500)
+    btree_id = models.CharField(max_length=25,null=True,blank=True)
+    billing_adrs = models.ForeignKey(UserAddress, related_name='billinga', on_delete=models.DO_NOTHING)
+    #payment_mode = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.customer.username 

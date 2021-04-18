@@ -27,6 +27,7 @@ urlpatterns = [
     path('dmanage/', include('dmanage.urls')),
     path('dpickup/', include('dpickup.urls')),
     path('dtest/', include('dtest.urls')),
+    #path('payments/', include('payments.urls')),
 ]
 
 

@@ -53,7 +53,7 @@ class UserSearchCreateView(CreateView):
         context['GMAPS'] = settings.GOOGLE_API_KEY
         return context
 
-def packages_nearby(request):
+""" def packages_nearby(request):
     point = UserAddress()
     form = UserSearchForm()
     lattitude = point.get_permanent_lat()
@@ -91,4 +91,4 @@ def packages_search(request):
         context,
         request=request,
     )
-    return JsonResponse(data)
+    return JsonResponse(data) """

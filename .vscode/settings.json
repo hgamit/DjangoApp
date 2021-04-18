@@ -1,3 +1,4 @@
 {
-    "python.venvPath": "C:/ProgramData/Anaconda3/envs"
+    "python.venvPath": "C:/ProgramData/Anaconda3/envs",
+    "python.pythonPath": "djangoenv\\Scripts\\python.exe"
 }

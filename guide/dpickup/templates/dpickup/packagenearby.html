@@ -4,6 +4,7 @@
 {% block title %}Packages in your area{% endblock %}
 
 {% block stylesheet %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <style>
   .pac-container {
       z-index: 10000 !important;
@@ -27,7 +28,7 @@
     </button>
   </p>-->
   <div id="modal-package1">
-  {% include 'dpickup/includes/partial_packages_search_u.html' %}
+  {% include 'dpickup/includes/partial_packages_search.html' %}
   </div>
 <table class="table" id="package-table">
   <thead class="thead-inverse">
@@ -47,19 +48,11 @@
     {% include 'dpickup/includes/partial_packages_list.html' %}
   </tbody>
 </table>
-<p>Key: {{GMAPS}}</p>
-  <!-- THE MODAL WE WILL BE USING 
-  <div class="modal fade" id="modal-package">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      </div>
-    </div>
-  </div> -->
 
 {% endblock %}
 
 {% block javascript %}
   <script src="{% static 'dpickup/js/packagenearby.js' %}"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwnyB3u6daVwzmkt3c85SvxOMuQDwrKwo&libraries=places"
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{GMAPS}}&libraries=places"
           async defer></script>
 {% endblock %}

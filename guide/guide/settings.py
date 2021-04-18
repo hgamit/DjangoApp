@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'boards',
     'widget_tweaks',
+    'braintree',
     'accounts',
     'ajaxtest',
     'delivery',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'dtest',
     'dpickup',
     'django.contrib.gis',
+    #'payments',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,23 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 GOOGLE_API_KEY = 'AIzaSyCwnyB3u6daVwzmkt3c85SvxOMuQDwrKwo'
+
+"""
+- Add some settings -
+Log in to your sandbox account and get your API keys plus your merchant ID.
+"""
+
+BRAINTREE_PRODUCTION = False  # We'll need this later to switch between the sandbox and live account
+
+BRAINTREE_MERCHANT_ID = 'jwd4nkgg9j2wzv83'
+BRAINTREE_PUBLIC_KEY = 'rvsh68vbzzyb6ggz'
+BRAINTREE_PRIVATE_KEY = 'ca6ce1552198af178c1b8bd7ad7ffa0a'
+
+
+#PAYMENTS
+
+PAYMENT_HOST = 'localhost:8000'
+PAYMENT_USES_SSL = False
+PAYMENT_MODEL = 'mypaymentapp.Payment'
+PAYMENT_VARIANTS = {
+    'default': ('payments.dummy.DummyProvider', {})}
